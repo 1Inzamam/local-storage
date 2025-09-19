@@ -4,6 +4,7 @@ const handleAddToCart = () => {
     const name = productName.value;
     const quantity = productQuantity.value;
     
+    store(name, quantity);
     display(name, quantity);
     
     productName.value = "";
@@ -15,4 +16,9 @@ const display = (pname , pquantity) =>{
     const li = document.createElement('li');
     li.innerText = `${pname} : ${pquantity}`;
     container.appendChild(li);
+}
+
+const store = (name, quantity) => {
+    const product = { Name: name, Quantity: quantity};
+    localStorage.setItem("Cart", JSON.stringify(product))
 }
