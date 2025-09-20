@@ -10,7 +10,7 @@ const handleAddToCart = () => {
     productName.value = "";
     productQuantity.value ="";
 }
-
+//display content
 const display = (pname , pquantity) =>{
     const container = document.getElementById('productContainer');
     const li = document.createElement('li');
@@ -32,6 +32,16 @@ const getProduct = () => {
     return localP;
 }
 
+//display products from local storage
+const displayP = () => {
+    const products = getProduct();
+    // console.log(products)
+    for(const product in products){
+        // console.log(products[product])
+        display(product,products[product])
+    }
+}
+
 const savePLocal = (pname,quantity) => {
     const localP = getProduct();
 
@@ -42,3 +52,5 @@ const savePLocal = (pname,quantity) => {
     localStorage.setItem("Product", productString)
 
 }
+
+displayP();
